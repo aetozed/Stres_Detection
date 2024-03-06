@@ -25,7 +25,7 @@ const db = getDatabase()
 let data_gsr;
 //BPM 
 onValue(ref(db, 'GSR/GSR_1'), (snapshot) => {
-  data_BPM = snapshot.val();
+  data_gsr = snapshot.val();
   var tampil_GSR   = document.getElementById('gsr');
   tampil_GSR.innerHTML = data_gsr ;
 });

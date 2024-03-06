@@ -1,27 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
     const hitung = document.querySelector(".container");
-    const hasil_hitung_normal = document.querySelector(".container1");
-    const hasil_hitung_tidak_normal = document.querySelector(".container2");
+    const hasil_hitung_tidak_normal = document.querySelector(".container1");
+    const hasil_hitung_normal = document.querySelector(".container2");
 
     
     //tidak dibawah 300
     var input1 = document.getElementById("input1");
-    var errorMessage1 = document.getElementById("error-message1");
-
-    //max suhu
-    input1.addEventListener("input", function () {
-        var nilai = parseInt(input1.value, 10);
-
-        if (nilai < 89 || nilai > 301) {
-            input1.classList.add("input-error");
-            errorMessage1.textContent = "Nilai harus antara 89 dan 300";
-        } else {
-            input1.classList.remove("input-error");
-            errorMessage1.textContent = "";
-        }
-    });
-
-
+    var BPM = document.getElementById("input2");
+    var SPO2 = document.getElementById("input3");
 
     document.getElementById("tombol-home").addEventListener("click", function() {
         hitung.style.display = "grid";
@@ -32,31 +18,28 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("detect").addEventListener("click", function(){
         // mendefinisikan data dari input
         // BPM
-        var nilaiBPM = document.getElementById("BPM").innerHTML;
+        var nilaiBPM = document.getElementById("input2").value;
         //SPO2
-        var nilaiSPO2 = document.getElementById("SPO2").innerHTML;
+        var nilaiSPO2 = document.getElementById("input3").value;
         //SUHU
         var nilaisuhu = document.getElementById("suhu").innerHTML;
         //Tekanan Darah
         var dataToSend1 = document.getElementById("input1").value;
-    
-        //tipe konduktansi kulit
-        var selectedOption = Konduktansi.options[Konduktansi.selectedIndex];
-        var selectedKonduktansi = selectedOption.value;
+        // konduktansi kulit
+        var nilai_gsr = document.getElementById("gsr").innerHTML;
     
         //Cek apakah semua input telah dimasukkan
-        if (input1.value !== "") {
+        if (input1.value !== "" && BPM.value !== "" && SPO2.value !== "") {
             
             input1.value = "";
-    
-            //Nyeri reset
-            pilihanKonduktansi.selectedIndex = 0;
+            BPM.value = "";
+            SPO2.value = "";
     
             var inputInt1 = parseInt(nilaiBPM);
             var inputInt2 = parseInt(nilaiSPO2);
             var inputInt3 = parseInt(nilaisuhu);
             var inputInt4 = parseInt(dataToSend1);
-            var inputInt5 = parseInt(selectedKonduktansi);
+            var inputInt5 = parseInt(nilai_gsr);
     
             var dataToSend = {
                     data1 : inputInt1,
@@ -76,21 +59,22 @@ document.addEventListener("DOMContentLoaded", function() {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data.hasil1)
-                    var hasilElement1 = document.getElementById("hasil1");
-                    if(data.hasil2) {
-                        hitung.style.display = "none";
-                        hasil_hitung_normal.style.display = "grid";
-                        hasil_hitung_tidak_normal.style.display = "none";
-                        hasilElement1.innerHTML = data.hasil1
-                    } else {
-                        hitung.style.display = "none";
-                        hasil_hitung_normal.style.display = "none";
-                        hasil_hitung_tidak_normal.style.display = "grid";
-                        hasilElement1.innerHTML = data.hasil2
-                    }
-            
-            
+                    setTimeout(function() {
+                        console.log(data.hasil1);
+                        var hasilElement1 = document.getElementById("hasil1");
+                        var hasilElement2 = document.getElementById("hasil2");
+                        if (data.hasil2) {
+                            hitung.style.display = "none";
+                            hasil_hitung_tidak_normal.style.display = "grid";
+                            hasil_hitung_normal.style.display = "none";
+                            hasilElement1.innerHTML = data.hasil1 + "%";
+                        } else {
+                            hitung.style.display = "none";
+                            hasil_hitung_normal.style.display = "grid";
+                            hasil_hitung_tidak_normal.style.display = "none";
+                            hasilElement2.innerHTML = data.hasil1 + "%";
+                        }
+                    }, 10000); // Waktu ditulis dalam milidetik (10 detik)
                 })
                 .catch((error) => {
                     console.error('Error:', error);
