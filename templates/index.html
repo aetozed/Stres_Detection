@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Logo -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/Stress logo.png')}}" type="image/x-icon">
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
+    <title>STRESS DETECTION</title>
+</head>
+<body>
+    <!-- navbar -->
+    <nav>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/Stress logo.png')}}" alt="">
+        </div>
+        <div class="title">
+            STRESS DETECTION
+        </div>
+        <div id="tombol-home">
+            <div class="home">
+                HOME
+            </div>
+        </div>
+        
+    </nav>
+    <!-- isi content -->
+    <div class="container">
+        <aside class="kiri">
+            <div class="Tampilan-gsr">
+                <div class="tulisan-gsr">
+                    GSR
+                </div>
+                <div class="hasil-gsr">
+                    <div id="gsr"></div>
+                </div>
+                
+            </div>
+            <div class="Tampilan suhu"> 
+                <div class="tulisan-suhu">
+                    SUHU
+                </div>
+                <div class="hasil-suhu">
+                    <div id="suhu"></div>°C
+                </div>
+                
+            </div>
+        </aside>
+        <aside class="kanan1"><div class="input">
+            <div class="isi">
+                <div class="pernyataan-tekanan">
+                    Tekanan Darah
+                </div>
+                <div class="isi-tekanan">
+                    <input type="number" id="input1" placeholder="Tekanan darah batas atas antara 90 - 300"> 
+                    <span id="error-message1" style="color: red;"></span>
+                </div>
+                <div class="pernyataan-bpm">
+                    BPM
+                </div>
+                <div class="isi-bpm">
+                    <input type="number" id="input2" placeholder="BPM antara 0 - 200"> 
+                    <span id="error-message2" style="color: red;"></span>  
+                </div>
+                <div class="pernyataan-spo2">
+                    SPO2
+                </div>
+                <div class="isi-spo2">
+                    <input type="number" id="input3" placeholder="SPO2 antara 0 - 100"> 
+                    <span id="error-message3" style="color: red;"></span>  
+                </div>
+                
+            </div>
+            <div class="isi-bawah">
+                <div class="tombol1">
+                    <button class="tombol-deteksi" id="detect"><div class="tulis-deteksi"> 
+                        DETEKSI
+                    </div></button>
+                </div>
+            </div>
+        </aside>
+        <div class="footer">
+
+        </div>
+    </div>
+
+    <!-- halaman 2 -->
+    <!-- Halaman Hasil 1-->
+    <div class="container1">
+        <div class="hasil-stres">
+            <div class="tulisan-stres">
+                Persentase Stres
+            </div>
+            <div class="hasil-stres" id="hasil1">
+                
+            </div>
+            <div class="deskrips-normal">
+                Kondisi Anda Sedang Stres
+            </div>
+        </div>
+    </div>
+        <!-- Halaman Hasil 2-->
+    <div class="container2">
+        <div class="hasil-stres">
+            <div class="tulisan-stres">
+                Persentase Stres
+            </div>
+            <div class="hasil-stres" id="hasil2">
+            </div>
+            <div class="deskrips-tidak-normal">
+                Kondisi Anda Tidak Stres
+            </div>
+        </div>
+
+    </div>
+
+<!-- backend -->
+    
+    
+    <script type="module" src="{{ url_for('static', filename='firebase-config.js')}}"></script>
+    <script type="module" src="{{ url_for('static', filename='script.js')}}"></script>
+</body>
+</html>
