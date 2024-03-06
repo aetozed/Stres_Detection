@@ -6,7 +6,8 @@
     <!-- Logo -->
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/Stress logo.png')}}" type="image/x-icon">
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/style.css')}}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/style.css')}}"> -->
+    <link type="text/css" href="{{ url_for('static', filename='style/style.css')}}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
@@ -14,7 +15,7 @@
 </head>
 <body>
     <!-- navbar -->
-    <nav>
+    <nav class="bg-black">
         <div class="logo">
             <img src="{{ url_for('static', filename='img/Stress logo.png')}}" alt="">
         </div>
@@ -22,7 +23,7 @@
             STRESS DETECTION
         </div>
         <div id="tombol-home">
-            <div class="home">
+            <div class="home text-white">
                 HOME
             </div>
         </div>

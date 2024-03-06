@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  },
+  "scripts": {
+    "create-css": "npx tailwindcss -i ./static/style/style.css --watch"
+  }
+}
