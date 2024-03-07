@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify, render_template
 from Fuzzy2 import model_fuzzy
+
 app = Flask(__name__)
+
 
 @app.route('/')
 def home():
