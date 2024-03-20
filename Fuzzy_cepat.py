@@ -1,6 +1,5 @@
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
-import matplotlib.pyplot as plt
 import numpy as np
 
 def model_fuzzy(suhu, konduktansi, detak, tekanan, Saturasi_oksigen):
