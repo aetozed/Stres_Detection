@@ -34,6 +34,7 @@ stres['tinggi'] = fuzz.trimf(stres.universe, [50, 70, 100])
 
 # Rule base
 rule1 = ctrl.Rule(detak_jantung['normal'] & tekanan_darah['normal'] & suhu_tubuh['normal'] & konduktivitas_kulit['normal'] & oksigen_darah['normal'], stres['rendah'])
+rules2 = 
 rule2 = ctrl.Rule(detak_jantung['tidak_normal'] | tekanan_darah['tidak_normal'] | suhu_tubuh['tidak_normal'] | konduktivitas_kulit['tidak_normal'] | oksigen_darah['tidak_normal'], stres['tinggi'])
 
 # Mengatur rule base
@@ -52,5 +53,6 @@ def model_fuzzy(detak_jantung_val, tekanan_darah_val, suhu_tubuh_val, konduktivi
     return stres_detection_sim.output['stres']
 
 # # Contoh penggunaan
-# hasil = round(model_fuzzy(40, 100, 21, 9, 90), 2)
-# print("Tingkat stres:", hasil)
+hasil = round(model_fuzzy(70, 120, 33, 2, 100), 2)
+print("Tingkat stres:", hasil)
+

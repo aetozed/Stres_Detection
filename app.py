@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template
-from Fuzzy2 import model_fuzzy
+from Fuzzy_cepat import model_fuzzy
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def receive_data():
     # Lakukan sesuatu dengan data yang diterima di sini
     
     # Kirim balik respons ke JavaScript
-    hasil = round(model_fuzzy(float(data_BPM), float(data_Tekanan), float(data_suhu), float(data_Konduktivitas), float(data_SPO2)), 2)
+    hasil = round(model_fuzzy(int(data_suhu), int(data_Konduktivitas), int(data_BPM), int(data_Tekanan), float(data_SPO2)), 2)
     if hasil >= 50:
         hasil2 = True
     else:
@@ -34,4 +34,4 @@ def receive_data():
     })
 
 if __name__ == "__main__":
-  app.run(debug=False, host='0.0.0.0')
+  app.run(debug=True, host='0.0.0.0')

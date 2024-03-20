@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             hasil_hitung_tidak_normal.style.display = "none";
                             hasilElement2.innerHTML = data.hasil1 + "%";
                         }
-                    }, 10000); // Waktu ditulis dalam milidetik (10 detik)
+                    }, ); // Waktu ditulis dalam milidetik (10 detik)
                 })
                 .catch((error) => {
                     console.error('Error:', error);
