@@ -22,7 +22,7 @@ def receive_data():
     # Lakukan sesuatu dengan data yang diterima di sini
     
     # Kirim balik respons ke JavaScript
-    hasil = round(model_fuzzy(int(data_suhu), int(data_Konduktivitas), int(data_BPM), int(data_Tekanan), float(data_SPO2)), 2)
+    hasil = round(model_fuzzy(float(data_suhu), int(data_Konduktivitas), int(data_BPM), int(data_Tekanan), float(data_SPO2)), 2)
     if hasil >= 50:
         hasil2 = True
     else:
